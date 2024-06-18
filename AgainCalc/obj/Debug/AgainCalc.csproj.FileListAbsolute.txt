@@ -3,3 +3,8 @@ D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.Form1.resources
 D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.Properties.Resources.resources
 D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.csproj.GenerateResource.cache
 D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\AgainCalc\AgainCalc\bin\Debug\AgainCalc.exe.config
+D:\VisualStudioProjects\AgainCalc\AgainCalc\bin\Debug\AgainCalc.exe
+D:\VisualStudioProjects\AgainCalc\AgainCalc\bin\Debug\AgainCalc.pdb
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.exe
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.pdb

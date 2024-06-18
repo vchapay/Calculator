@@ -28,6 +28,10 @@ namespace AgainCalc
                 case '!':
                 case 'a':
                     return 4;
+                case '(':
+                case '[':
+                case '{':
+                    return 5;
                 default:
                     return 0;
             }
@@ -65,7 +69,7 @@ namespace AgainCalc
         /// <returns></returns>
         public static bool IsUnary(char op)
         {
-            return "!a".Contains(op);
+            return "!a%".Contains(op);
         }
 
         public static bool IsOperator(char op)
