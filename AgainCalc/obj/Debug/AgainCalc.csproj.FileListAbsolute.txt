@@ -1,0 +1,5 @@
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.csproj.AssemblyReference.cache
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.Form1.resources
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.Properties.Resources.resources
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.csproj.GenerateResource.cache
+D:\VisualStudioProjects\AgainCalc\AgainCalc\obj\Debug\AgainCalc.csproj.CoreCompileInputs.cache
