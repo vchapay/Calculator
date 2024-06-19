@@ -20,6 +20,8 @@ namespace AgainCalc
             if (expression[0] == '+' || expression[0] == '-')
                 expression = "0" + expression;
 
+            expression = InputPresenter.IntrepretateModuleBrackets(expression);
+
             for (int i = 0; i < expression.Length; i++)
             {
                 c = expression[i];
@@ -49,7 +51,7 @@ namespace AgainCalc
                         converted += "0 ";
 
                     if (operators.Count > 0)
-                        if (Operation.GetPriority(operators.Peek()) <= Operation.GetPriority(c))
+                        if (Operation.GetPriority(operators.Peek()) >= Operation.GetPriority(c))
                             converted += operators.Pop() + " ";
 
                     operators.Push(c);
@@ -60,7 +62,21 @@ namespace AgainCalc
 
                 if (Operation.IsCloseBracket(c))
                 {
-                    while (!Operation.IsOpenBracket(operators.Peek()))
+                    char openBr = '\0';
+                    switch (c)
+                    {
+                        case ')':
+                            openBr = '(';
+                            break;
+                        case ']':
+                            openBr = '[';
+                            break;
+                        case '}':
+                            openBr = '{';
+                            break;
+                    }
+
+                    while (operators.Peek() != openBr)
                     {
                         converted += operators.Pop() + " ";
                     }

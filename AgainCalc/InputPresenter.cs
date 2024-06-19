@@ -11,20 +11,22 @@ namespace AgainCalc
     {
         public InputPresenter() { }
 
-        public const string NonOperandChars = "+-/*^!%()[]{}";
+        public const string NonOperandChars = "+-/*^!%()[]{}|";
 
         public const string OperandChars = "0123456789,";
 
         public const string OperatorChars = "+-*/^!%";
 
         private readonly Regex correctOperatorsSample = 
-            new Regex(@"\A!?%?[\]\)\}]*(!?%?[/*\-+^]{1})?[\(\[\{]*[+-]?\Z");
+            new Regex(@"\A(!?%?[\]\)\}]*!?%?([/*+^-]{1}([\(\[\{]+[+-]?)?)?|[\(\[\{]*[+-]?)\Z");
 
         private readonly Regex correctNumSample = 
             new Regex(@"\A\d+(,?\d+)?\Z");
 
         private readonly Regex incorrectBracketSample = 
-            new Regex(@"\d+,?[\(\)\{\}\[\]]+,?\d+");
+            new Regex(@"\d+,?[\(\)\{\}\[\]|]+,?\d+");
+
+
 
         public event EventHandler InputChanged;
 
@@ -38,7 +40,7 @@ namespace AgainCalc
             if (expression == null || expression == string.Empty)
                 return false;
 
-            //expression = IntrepretateModuleBrackets(expression);
+            expression = IntrepretateModuleBrackets(expression);
             return IsValidBrackets(expression) && 
                 IsValidOperators(expression) && 
                 IsValidOperands(expression);
@@ -46,7 +48,34 @@ namespace AgainCalc
 
         public static string IntrepretateModuleBrackets(string expression)
         {
-            return null;
+            string interpretated = expression;
+            char prevChar = '\0';
+            char c;
+            for (int i = 0; i < expression.Length; i++)
+            {
+                c = expression[i];
+
+                if (c == '|')
+                {
+                    if (prevChar == '\0' ||
+                        Operation.IsBynary(prevChar) ||
+                        Operation.IsOpenBracket(prevChar))
+                    {
+                        interpretated = interpretated.Remove(i, 1);
+                        interpretated = interpretated.Insert(i, "{");
+                    }
+
+                    else
+                    {
+                        interpretated = interpretated.Remove(i, 1);
+                        interpretated = interpretated.Insert(i, "}");
+                    }
+                }
+
+                prevChar = c;
+            }
+
+            return interpretated;
         }
 
         private bool IsValidOperands(string expression)

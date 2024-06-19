@@ -17,6 +17,10 @@ namespace AgainCalc
         {
             switch (op)
             {
+                case '(':
+                case '[':
+                case '{':
+                    return 0;
                 case '+':
                 case '-':
                     return 1;
@@ -28,12 +32,8 @@ namespace AgainCalc
                 case '!':
                 case 'a':
                     return 4;
-                case '(':
-                case '[':
-                case '{':
-                    return 5;
                 default:
-                    return 0;
+                    return 5;
             }
         }
 
@@ -49,7 +49,7 @@ namespace AgainCalc
 
         public static bool IsBracket(char ch)
         {
-            return "()[]|".Contains(ch);
+            return "()[]{}".Contains(ch);
         }
 
         public static bool IsOpenBracket(char ch)
