@@ -7,43 +7,61 @@ using System.Threading.Tasks;
 
 namespace AgainCalc
 {
-    public class InputPresenter
+    /// <summary>
+    /// Предоставляет логику проверки корректности строковых выражений
+    /// </summary>
+    public static class InputPresenter
     {
-        public InputPresenter() { }
 
         public const string NonOperandChars = "+-/*^!%()[]{}|";
 
-        public const string OperandChars = "0123456789,";
+        public const string OperandChars = "0123456789.";
 
         public const string OperatorChars = "+-*/^!%";
 
-        private readonly Regex correctOperatorsSample = 
-            new Regex(@"\A(!?%?[\]\)\}]*!?%?([/*+^-]{1}([\(\[\{]+[+-]?)?)?|[\(\[\{]*[+-]?)\Z");
+        private const string impossibleFirstChars = ")}]*/^!%";
 
-        private readonly Regex correctNumSample = 
-            new Regex(@"\A\d+(,?\d+)?\Z");
+        private static readonly Regex binaryInRow = new Regex(@"[/*+^-]{2}[/*+^-]*");
 
-        private readonly Regex incorrectBracketSample = 
-            new Regex(@"\d+,?[\(\)\{\}\[\]|]+,?\d+");
+        private static readonly Regex impossibleUnary = new Regex(@"([-/*+^\(\[\{a-z]+[!%]+)|([!%]+[\(\[\{a-z]+)");
 
+        private static readonly Regex impossibleBinary = new Regex(@"[-+/*^]+[\)\]\}!%]+");
 
+        private static readonly Regex emptyBrackets = new Regex(@"[\(\[\{]+[-+*/^!%]*[\)\]\}]+");
 
-        public event EventHandler InputChanged;
+        private static readonly Regex correctNumSample = 
+            new Regex(@"\A\d+(\.?\d+)?\Z");
 
-        public static bool IsValidChar(char c)
-        {
-            return NonOperandChars.Contains(c) || OperandChars.Contains(c);
-        }
+        private static readonly Regex bracketsBetweenNumbers = 
+            new Regex(@"\d+\.?[\(\)\{\}\[\]|]+\.?\d+");
 
-        public bool IsValidForm(string expression)
+        private static readonly Regex unaryFunc =
+            new Regex(@"[-\(\[\{+*/^]*(sin|cos|tg|ctg|lg|ln)\(+");
+
+        private static readonly Regex binaryFunc =
+            new Regex(@"( log base )");
+
+        private static readonly Regex isThereFuncs =
+            new Regex(@"\p{Ll}");
+
+        private static readonly Regex funcSplitter = new Regex(@"^\p{Ll}");
+
+        private static readonly Regex operandsSplitter = new Regex(@"[\D,]");
+
+        /// <summary>
+        /// Проверяет, имеет ли заданное строковое выражение смысл
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public static bool IsValidForm(string expression)
         {
             if (expression == null || expression == string.Empty)
                 return false;
-
             expression = IntrepretateModuleBrackets(expression);
-            return IsValidBrackets(expression) && 
-                IsValidOperators(expression) && 
-                IsValidOperands(expression);
+            return IsBracketsValid(expression) && 
+                IsOperatorsValid(expression) && 
+                IsOperandsValid(expression) &&
+                IsFuncsValid(expression);
         }
 
         public static string IntrepretateModuleBrackets(string expression)
@@ -78,15 +96,25 @@ namespace AgainCalc
             return interpretated;
         }
 
-        private bool IsValidOperands(string expression)
+        private static bool IsFuncsValid(string expression)
         {
-            string[] operands = expression.Split(NonOperandChars.ToCharArray(),
-                StringSplitOptions.RemoveEmptyEntries);
+            string str = unaryFunc.Replace(expression, "");
+            str = binaryFunc.Replace(str, "");
+
+            return !isThereFuncs.IsMatch(str);
+        }
+
+        private static bool IsOperandsValid(string expression)
+        {
+            string[] operands = operandsSplitter.Split(expression);
 
             string operand;
             for (int i = 0; i < operands.Length; i++)
             {
                 operand = operands[i];
+
+                if (operand.Length == 0)
+                    continue;
 
                 if (!correctNumSample.IsMatch(operand))
                     return false;
@@ -95,9 +123,12 @@ namespace AgainCalc
             return true;
         }
 
-        private bool IsValidOperators(string expression)
+        private static bool IsOperatorsValid(string expression)
         {
             if (Operation.IsBynary(expression.Last()))
+                return false;
+
+            if (impossibleFirstChars.Contains(expression[0]))
                 return false;
 
             string[] nonOperands = expression.Split(OperandChars.ToCharArray(),
@@ -108,20 +139,25 @@ namespace AgainCalc
             {
                 current = nonOperands[i];
 
-                //if ((i == 0 || i == nonOperands.Length - 1) && 
-                    //firstAndLastBrs.IsMatch(current))
-                    //continue;
+                if (binaryInRow.IsMatch(current))
+                    return false;
 
-                if (!correctOperatorsSample.IsMatch(current))
+                if (impossibleBinary.IsMatch(current))
+                    return false;
+
+                if (impossibleUnary.IsMatch(current))
+                    return false;
+
+                if (emptyBrackets.IsMatch(current))
                     return false;
             }
 
             return true;
         }
 
-        private bool IsValidBrackets(string expression)
+        private static bool IsBracketsValid(string expression)
         {
-            if (incorrectBracketSample.IsMatch(expression))
+            if (bracketsBetweenNumbers.IsMatch(expression))
                 return false;
 
             return CheckBrackets(expression, new char[] { '(', ')' }) &&
@@ -129,7 +165,7 @@ namespace AgainCalc
                 CheckBrackets(expression, new char[] { '{', '}' });
         }
 
-        private bool CheckBrackets(string expression, char[] brs)
+        private static bool CheckBrackets(string expression, char[] brs)
         {
             char c;
             int opensCount = 0;
@@ -147,11 +183,6 @@ namespace AgainCalc
             }
 
             return opensCount == closesCount;
-        }
-
-        private void OnInputChanged(EventArgs e)
-        {
-            InputChanged?.Invoke(this, e);
         }
     }
 }

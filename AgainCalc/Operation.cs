@@ -3,11 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AgainCalc
 {
     internal static class Operation
     {
+        private static readonly string[] unaryFunctions = new string[]
+        {
+            "sin",
+            "cos",
+            "tg",
+            "ctg",
+            "lg",
+            "ln"
+        };
+
+        private static readonly string[] binaryFunctions = new string[]
+        {
+            "log",
+        };
+
         /// <summary>
         /// Возвращает число от 1 до 4, означающее приоритетность оператора.
         /// </summary>
@@ -77,6 +93,11 @@ namespace AgainCalc
             return IsBynary(op) || IsUnary(op);
         }
 
+        public static bool IsFunction(string name)
+        {
+            return unaryFunctions.Contains(name);
+        }
+
         /// <summary>
         /// Возвращает результат бинарной операции в соответствии с переданными операндами и оператором.
         /// </summary>
@@ -100,7 +121,7 @@ namespace AgainCalc
                 case '^':
                     return Math.Pow(left, right);
                 default:
-                    throw new ArgumentException("Обнаружен неизвестный оператор");
+                    throw new ArgumentException("Обнаружен неизвестный бинарный оператор");
             }
         }
 
@@ -122,8 +143,57 @@ namespace AgainCalc
                 case 'a':
                     return Math.Abs(operand);
                 default:
-                    throw new ArgumentException("Обнаружен неизвестный оператор");
+                    throw new ArgumentException("Обнаружен неизвестный унарный оператор");
             }
+        }
+
+        public static double SolveFunction(string func, params double[] args)
+        {
+            if (args == null || args.Length == 0)
+                throw new ArgumentException("Не было передано ни одного аргумента для математической функции");
+
+            if (IsUnaryFunction(func))
+                return SolveUnaryFunction(func, args[0]);
+
+            if (args.Length < 2)
+                throw new ArgumentException("Недостаточно аргументов для математической функции");
+
+            return SolveBinaryFunction(func, args);
+        }
+
+        private static double SolveBinaryFunction(string func, double[] args)
+        {
+            switch (func)
+            {
+                case "log":
+                    return Math.Log(args[0], args[1]);
+                default: throw new ArgumentException("Обнаружена неизвестная функция");
+            }
+        }
+
+        private static double SolveUnaryFunction(string func, double arg)
+        {
+            switch (func)
+            {
+                case "sin":
+                    return Math.Sin(arg);
+                case "cos":
+                    return Math.Cos(arg);
+                case "tg":
+                    return Math.Tan(arg);
+                case "ctg":
+                    return 1 / Math.Tan(arg);
+                case "lg":
+                    return Math.Log10(arg);
+                case "ln":
+                    return Math.Log(arg);
+                default: throw new ArgumentException("Обнаружена неизвестная функция");
+            }
+        }
+
+        public static bool IsUnaryFunction(string func)
+        {
+            return unaryFunctions.Contains(func);
         }
 
         private static int FindFactorial(int baseNum)

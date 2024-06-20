@@ -6,38 +6,56 @@ using System.Threading.Tasks;
 
 namespace AgainCalc
 {
+    /// <summary>
+    /// Предоставляет логику для решения выражений, заданных произвольно строкой
+    /// </summary>
     internal static class Solver
     {
+
         private static string _expression;
         private static string[] _tokens;
         private static readonly Stack<double> operands = new Stack<double>();
+        private static int _rounding;
 
         /// <summary>
-        /// Пробует найти результат заданного строкой выражения.
+        /// Возвращает и задает число знаков после запятой, 
+        /// до которых округляется результат
+        /// </summary>
+        public static int Rounding
+        {
+            get => _rounding;
+            set => _rounding = value;
+        }
+
+        /// <summary>
+        /// Пробует найти результат заданного строкой выражения (в инфиксной форме).
         /// </summary>
         /// <param name="expression">Выражение, которое нужно решить</param>
         /// <param name="result">Результат решения</param>
         /// <returns>True, если решение найдено. Иначе false.</returns>
-        public static bool TrySolve(string expression, out string result)
+        public static bool TrySolve(string expression, out string result, out string message)
         {
             if (expression == null) throw new ArgumentNullException();
 
             if (expression == string.Empty)
             {
                 result = "";
+                message = string.Empty;
                 return false;
             }
 
             try
             {
                 _expression = PostfixConverter.Convert(expression);
-                result = Solve().ToString();
+                result = Math.Round(Solve(), 7).ToString();
+                message = string.Empty;
                 return true;
             }
 
             catch (Exception e)
             {
-                result = e.Message;
+                result = "";
+                message = e.Message;
                 return false;
             }
         }
@@ -48,39 +66,52 @@ namespace AgainCalc
             _tokens = _expression.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             string token;
-            char charToken;
             for (int i = 0; i < _tokens.Length; i++)
             {
                 token = _tokens[i];
-                charToken = token[0];
-                if (token.Length > 1 || char.IsDigit(charToken))
+                if (token.Length >= 1 && char.IsDigit(token[0]))
                 {
                     operands.Push(double.Parse(token));
                 }
 
                 else
                 {
-                    SolveOperation(charToken);
+                    SolveOperation(token);
                 }
             }
 
             return operands.Pop();
         }
 
-        private static void SolveOperation(char charToken)
+        private static void SolveOperation(string token)
         {
             double operationResult = 0;
-            if (Operation.IsBynary(charToken))
+
+            if (Operation.IsFunction(token))
+            {
+                double first = operands.Pop();
+                double second = 0;
+                if (!Operation.IsUnaryFunction(token))
+                    second = operands.Pop();
+                double[] args = new double[] { first, second };
+                operationResult = Operation.SolveFunction(token, args);
+            }
+
+            else if (token.Length > 1)
+                throw new ArgumentException("Получен оператор, состоящий из нескольких символов");
+
+            char op = token[0];
+            if (Operation.IsBynary(op))
             {
                 double right = operands.Pop();
                 double left = operands.Pop();
-                operationResult = Operation.SolveBinary(left, right, charToken);
+                operationResult = Operation.SolveBinary(left, right, op);
             }
 
-            if (Operation.IsUnary(charToken))
+            if (Operation.IsUnary(op))
             {
                 double operand = operands.Pop();
-                operationResult = Operation.SolveUnary(operand, charToken);
+                operationResult = Operation.SolveUnary(operand, op);
             }
 
             operands.Push(operationResult);

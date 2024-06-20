@@ -124,7 +124,7 @@
             this.inputBox.TabIndex = 1;
             this.inputBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.inputBox.WordWrap = false;
-            this.inputBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
+            this.inputBox.TextChanged += new System.EventHandler(this.Resolve);
             // 
             // tableLayoutPanel1
             // 
