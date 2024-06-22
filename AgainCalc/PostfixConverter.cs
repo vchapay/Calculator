@@ -98,8 +98,11 @@ namespace AgainCalc
                         if (c == '}')
                             converted += "a ";
 
-                        if (funcs.Count > 0)
+                        if (operators.Count > 0 && operators.Peek() == 'f')
+                        {
                             converted += funcs.Pop() + " ";
+                            operators.Pop();
+                        }
                     }
 
                     if (c == '%')
@@ -134,8 +137,17 @@ namespace AgainCalc
 
                         i--;
                         funcs.Push(f);
+                        operators.Push('f');
                         lastToken = f;
                         continue;
+                    }
+
+                    if (c == ';')
+                    {
+                        while (operators.Peek() != '(')
+                        {
+                            converted += operators.Pop() + " ";
+                        }
                     }
 
                     lastToken = c.ToString();

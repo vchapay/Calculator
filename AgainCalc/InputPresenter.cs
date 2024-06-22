@@ -27,7 +27,7 @@ namespace AgainCalc
 
         private static readonly Regex impossibleBinary = new Regex(@"[-+/*^]+[\)\]\}!%]+");
 
-        private static readonly Regex emptyBrackets = new Regex(@"[\(\[\{]+[-+*/^!%]*[\)\]\}]+");
+        private static readonly Regex emptyBrackets = new Regex(@"[\(\[\{;]+[-+*/^!%]*[;\)\]\}]+");
 
         private static readonly Regex correctNumSample = 
             new Regex(@"\A\d+(\.?\d+)?\Z");
@@ -35,18 +35,18 @@ namespace AgainCalc
         private static readonly Regex bracketsBetweenNumbers = 
             new Regex(@"\d+\.?[\(\)\{\}\[\]|]+\.?\d+");
 
-        private static readonly Regex unaryFunc =
-            new Regex(@"[-\(\[\{+*/^]*(sin|cos|tg|ctg|lg|ln)\(+");
+        private static readonly Regex unaryFuncSample =
+            new Regex(@"[-\(\[\{+*/^]*(sin|cos|tg|ctg|lg|ln){1}\(+");
 
-        private static readonly Regex binaryFunc =
-            new Regex(@"( log base )");
+        private static readonly Regex binaryFuncSample =
+            new Regex(@"[-\(\[\{+*/^]*(log){1}\(.*[\d\)\]\}!%];");
 
-        private static readonly Regex isThereFuncs =
-            new Regex(@"\p{Ll}");
+        private static readonly Regex funcsNames =
+            new Regex(@"\A(log|sin|cos|tg|ctg|lg|ln){1}\Z");
 
-        private static readonly Regex funcSplitter = new Regex(@"^\p{Ll}");
+        private static readonly Regex funcsSplitter = new Regex(@"\P{L}");
 
-        private static readonly Regex operandsSplitter = new Regex(@"[\D,]");
+        private static readonly Regex operandsSplitter = new Regex(@"[\D]");
 
         /// <summary>
         /// Проверяет, имеет ли заданное строковое выражение смысл
@@ -57,6 +57,8 @@ namespace AgainCalc
         {
             if (expression == null || expression == string.Empty)
                 return false;
+
+            expression = expression.Replace(" ", "");
             expression = IntrepretateModuleBrackets(expression);
             return IsBracketsValid(expression) && 
                 IsOperatorsValid(expression) && 
@@ -98,10 +100,25 @@ namespace AgainCalc
 
         private static bool IsFuncsValid(string expression)
         {
-            string str = unaryFunc.Replace(expression, "");
-            str = binaryFunc.Replace(str, "");
+            string[] onlyLetters = funcsSplitter.Split(expression);
 
-            return !isThereFuncs.IsMatch(str);
+            int funcsCount = 0;
+
+            string cur;
+            for (int i = 0; i < onlyLetters.Length; i++)
+            {
+                cur = onlyLetters[i];
+                if (cur == "") continue;
+                if (!funcsNames.IsMatch(cur)) return false;
+                funcsCount++;
+            }
+
+            int binaries = binaryFuncSample.Matches(expression).Count;
+            int unaries = unaryFuncSample.Matches(expression).Count;
+            int semicolons = expression.Where((c) => c == ';').Count();
+
+            return funcsCount == binaries + unaries && semicolons == binaries;
+
         }
 
         private static bool IsOperandsValid(string expression)

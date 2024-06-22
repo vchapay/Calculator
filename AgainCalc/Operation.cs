@@ -95,7 +95,7 @@ namespace AgainCalc
 
         public static bool IsFunction(string name)
         {
-            return unaryFunctions.Contains(name);
+            return unaryFunctions.Contains(name) || binaryFunctions.Contains(name);
         }
 
         /// <summary>
