@@ -28,6 +28,34 @@ namespace AgainCalc
             }
 
             else expressionLbl.Text = "";
+            InputPresenter.Input = inputBox.Text;
+        }
+
+        private void WriteChar(object sender, MouseEventArgs e)
+        {
+            Button btn = sender as Button;
+            inputBox.Text += btn.Tag.ToString();
+        }
+
+        private void ClearAll(object sender, MouseEventArgs e)
+        {
+            inputBox.Text = string.Empty;
+        }
+
+        private void Clear(object sender, MouseEventArgs e)
+        {
+            if (inputBox.Text != string.Empty)
+                inputBox.Text = inputBox.Text.Remove(inputBox.Text.Length - 1, 1);
+        }
+
+        private void ChangeNumSign(object sender, MouseEventArgs e)
+        {
+            inputBox.Text = InputPresenter.ChangeNumSign();
+        }
+
+        private void SaveSelectionPos(object sender, EventArgs e)
+        {
+            InputPresenter.SelectionCursorPos = inputBox.SelectionStart;
         }
     }
 }

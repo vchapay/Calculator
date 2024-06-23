@@ -16,6 +16,7 @@ namespace AgainCalc
         private static string[] _tokens;
         private static readonly Stack<double> operands = new Stack<double>();
         private static int _rounding;
+        private static string _message = "";
 
         /// <summary>
         /// Возвращает и задает число знаков после запятой, 
@@ -46,9 +47,16 @@ namespace AgainCalc
 
             try
             {
+                _message = "";
                 _expression = PostfixConverter.Convert(expression);
-                result = Math.Round(Solve(), 7).ToString();
-                message = string.Empty;
+                result = Math.Round(Solve(), 10).ToString();
+                message = _message;
+
+                if (_message != "")
+                {
+                    return false;
+                }
+
                 return true;
             }
 
@@ -78,6 +86,8 @@ namespace AgainCalc
                 {
                     SolveOperation(token);
                 }
+
+                if (_message != "") return 0;
             }
 
             return operands.Pop();
@@ -93,12 +103,13 @@ namespace AgainCalc
                 double second = 0;
                 if (!Operation.IsUnaryFunction(token))
                     second = operands.Pop();
+
                 double[] args = new double[] { first, second };
                 operationResult = Operation.SolveFunction(token, args);
             }
 
             else if (token.Length > 1)
-                throw new ArgumentException("Получен оператор, состоящий из нескольких символов");
+                _message = "Получен оператор, состоящий из нескольких символов";
 
             char op = token[0];
             if (Operation.IsBynary(op))
@@ -111,6 +122,13 @@ namespace AgainCalc
             if (Operation.IsUnary(op))
             {
                 double operand = operands.Pop();
+
+                if (op == '!' && (int)operand != operand)
+                {
+                    _message = "Факториал от дробного числа неопределен";
+                    return;
+                }
+
                 operationResult = Operation.SolveUnary(operand, op);
             }
 

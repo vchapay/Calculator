@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,9 +16,33 @@ namespace AgainCalc
 
         public const string NonOperandChars = "+-/*^!%()[]{}|";
 
-        public const string OperandChars = "0123456789.";
+        public const string OperandChars = "0123456789,";
 
         public const string OperatorChars = "+-*/^!%";
+
+        public static string Input
+        {
+            get => expression;
+            set => expression = value ?? expression;
+        }
+
+        public static int SelectionCursorPos
+        {
+            get => selectionCursorPos;
+            set => selectionCursorPos = value > 0 ? value : 0;
+        }
+
+        public static int SelectionLenght
+        {
+            get => selectionLenght;
+            set => selectionLenght = value > 0 ? value : 0;
+        }
+
+        private static string expression;
+
+        private static int selectionCursorPos;
+
+        private static int selectionLenght;
 
         private const string impossibleFirstChars = ")}]*/^!%";
 
@@ -30,7 +55,7 @@ namespace AgainCalc
         private static readonly Regex emptyBrackets = new Regex(@"[\(\[\{;]+[-+*/^!%]*[;\)\]\}]+");
 
         private static readonly Regex correctNumSample = 
-            new Regex(@"\A\d+(\.?\d+)?\Z");
+            new Regex(@"\A\d+(,?\d+)?\Z");
 
         private static readonly Regex bracketsBetweenNumbers = 
             new Regex(@"\d+\.?[\(\)\{\}\[\]|]+\.?\d+");
@@ -46,7 +71,8 @@ namespace AgainCalc
 
         private static readonly Regex funcsSplitter = new Regex(@"\P{L}");
 
-        private static readonly Regex operandsSplitter = new Regex(@"[\D]");
+        private static readonly Regex operandsSplitter = 
+            new Regex(@"[a-z-+*/^\[\]\(\)\{\}!%;]+");
 
         /// <summary>
         /// Проверяет, имеет ли заданное строковое выражение смысл
@@ -98,6 +124,112 @@ namespace AgainCalc
             return interpretated;
         }
 
+        public static string ChangeNumSign()
+        {
+            int[] numPos = FindNumPos();
+            if (numPos.Length == 0)
+                return expression;
+
+            int numBeg = numPos[0];
+            int numEnd = numPos[1];
+            int indBefore = numBeg - 1;
+            char charBefore = numBeg == 0 ? '\0' : expression[indBefore];
+
+            if (charBefore == '\0')
+                return "-" + expression;
+
+            if (charBefore == '+')
+            {
+                expression = expression.Remove(indBefore, 1);
+                expression = expression.Insert(indBefore, "-");
+                return expression;
+            }
+
+            if (charBefore == '-')
+            {
+                expression = expression.Remove(indBefore, 1); 
+                expression = expression.Insert(indBefore, "+");
+                return expression;
+            }
+
+            if ("*/^".Contains(charBefore))
+            {
+                expression = expression.Insert(numBeg, "(-");
+                selectionCursorPos += 2;
+                expression = expression.Insert(numEnd + 3, ")");
+                return expression;
+            }
+
+            if (charBefore == '(')
+            {
+                selectionCursorPos++;
+                expression = expression.Insert(numBeg, "-");
+                return expression;
+            }
+
+            return expression;
+        }
+
+        private static int[] FindNumPos()
+        {
+            int numBeg;
+            int numEnd;
+
+            if (selectionCursorPos < expression.Length
+                && selectionCursorPos > 0)
+            {
+                if (!OperandChars.Contains(expression[selectionCursorPos]) &&
+                    !OperandChars.Contains(expression[selectionCursorPos - 1]))
+                {
+                    return new int[0];
+                }
+
+                else
+                {
+                    numBeg = FindNumBeg();
+                    numEnd = FindNumEnd();
+                }
+            }
+            
+            else if (selectionCursorPos == expression.Length)
+            { 
+                numBeg = FindNumBeg();
+                numEnd = expression.LastIndexOf(expression.Where((c) => OperandChars.Contains(c)).Last());
+            }
+
+            else
+            {
+                numBeg = expression.IndexOf(expression.Where((c) => OperandChars.Contains(c)).First());
+                numEnd = FindNumEnd();
+            }
+
+            return new int[2] { numBeg, numEnd };
+        }
+
+        private static int FindNumEnd()
+        {
+            int numEnd = expression.Length - 1;
+            for (int i = expression.Length - 1; i >= selectionCursorPos; i--)
+            {
+                if (!char.IsDigit(expression[i]))
+                    numEnd = i - 1;
+            }
+
+            return numEnd;
+        }
+
+        private static int FindNumBeg()
+        {
+            int numBeg = 0;
+            for (int i = 0; i < selectionCursorPos; i++)
+            {
+                if (!char.IsDigit(expression[i]))
+                    numBeg = i + 1;
+            }
+
+            return numBeg;
+        }
+
         private static bool IsFuncsValid(string expression)
         {
             string[] onlyLetters = funcsSplitter.Split(expression);
@@ -113,7 +245,20 @@ namespace AgainCalc
                 funcsCount++;
             }
 
-            int binaries = binaryFuncSample.Matches(expression).Count;
+            int binaries = 0;
+            int nextLogInd = expression.IndexOf("log");
+            string logStr = expression;
+            while (nextLogInd != -1)
+            {
+                logStr = logStr.Substring(nextLogInd);
+                if (binaryFuncSample.IsMatch(logStr))
+                    binaries++;
+
+                logStr = logStr.Remove(0, 3);
+
+                nextLogInd = logStr.IndexOf("log");
+            }
+
             int unaries = unaryFuncSample.Matches(expression).Count;
             int semicolons = expression.Where((c) => c == ';').Count();
 

@@ -48,6 +48,16 @@
             this.plusBtn = new System.Windows.Forms.Button();
             this.multBtn = new System.Windows.Forms.Button();
             this.divBtn = new System.Windows.Forms.Button();
+            this.factorialBtn = new System.Windows.Forms.Button();
+            this.bracketsBtn = new System.Windows.Forms.Button();
+            this.logBtn = new System.Windows.Forms.Button();
+            this.numSignBtn = new System.Windows.Forms.Button();
+            this.pointBtn = new System.Windows.Forms.Button();
+            this.absoluteBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.clearAllBtn = new System.Windows.Forms.Button();
+            this.logNBtn = new System.Windows.Forms.Button();
+            this.log10Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -125,6 +135,7 @@
             this.inputBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.inputBox.WordWrap = false;
             this.inputBox.TextChanged += new System.EventHandler(this.Resolve);
+            this.inputBox.Leave += new System.EventHandler(this.SaveSelectionPos);
             // 
             // tableLayoutPanel1
             // 
@@ -148,6 +159,16 @@
             this.tableLayoutPanel1.Controls.Add(this.plusBtn, 4, 5);
             this.tableLayoutPanel1.Controls.Add(this.multBtn, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.divBtn, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.factorialBtn, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.bracketsBtn, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.logBtn, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.numSignBtn, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.pointBtn, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.absoluteBtn, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.clearBtn, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.clearAllBtn, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.logNBtn, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.log10Btn, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -173,8 +194,10 @@
             this.zeroBtn.Name = "zeroBtn";
             this.zeroBtn.Size = new System.Drawing.Size(113, 68);
             this.zeroBtn.TabIndex = 0;
+            this.zeroBtn.Tag = "0";
             this.zeroBtn.Text = "0";
             this.zeroBtn.UseVisualStyleBackColor = false;
+            this.zeroBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // oneBtn
             // 
@@ -187,8 +210,10 @@
             this.oneBtn.Name = "oneBtn";
             this.oneBtn.Size = new System.Drawing.Size(113, 62);
             this.oneBtn.TabIndex = 1;
+            this.oneBtn.Tag = "1";
             this.oneBtn.Text = "1";
             this.oneBtn.UseVisualStyleBackColor = false;
+            this.oneBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // twoBtn
             // 
@@ -201,8 +226,10 @@
             this.twoBtn.Name = "twoBtn";
             this.twoBtn.Size = new System.Drawing.Size(113, 62);
             this.twoBtn.TabIndex = 2;
+            this.twoBtn.Tag = "2";
             this.twoBtn.Text = "2";
             this.twoBtn.UseVisualStyleBackColor = false;
+            this.twoBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // threeBtn
             // 
@@ -215,8 +242,10 @@
             this.threeBtn.Name = "threeBtn";
             this.threeBtn.Size = new System.Drawing.Size(113, 62);
             this.threeBtn.TabIndex = 3;
+            this.threeBtn.Tag = "3";
             this.threeBtn.Text = "3";
             this.threeBtn.UseVisualStyleBackColor = false;
+            this.threeBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // fourBtn
             // 
@@ -229,8 +258,10 @@
             this.fourBtn.Name = "fourBtn";
             this.fourBtn.Size = new System.Drawing.Size(113, 62);
             this.fourBtn.TabIndex = 4;
+            this.fourBtn.Tag = "4";
             this.fourBtn.Text = "4";
             this.fourBtn.UseVisualStyleBackColor = false;
+            this.fourBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // sevenBtn
             // 
@@ -243,8 +274,10 @@
             this.sevenBtn.Name = "sevenBtn";
             this.sevenBtn.Size = new System.Drawing.Size(113, 62);
             this.sevenBtn.TabIndex = 5;
+            this.sevenBtn.Tag = "7";
             this.sevenBtn.Text = "7";
             this.sevenBtn.UseVisualStyleBackColor = false;
+            this.sevenBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // fiveBtn
             // 
@@ -257,8 +290,10 @@
             this.fiveBtn.Name = "fiveBtn";
             this.fiveBtn.Size = new System.Drawing.Size(113, 62);
             this.fiveBtn.TabIndex = 6;
+            this.fiveBtn.Tag = "5";
             this.fiveBtn.Text = "5";
             this.fiveBtn.UseVisualStyleBackColor = false;
+            this.fiveBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // eightBtn
             // 
@@ -271,8 +306,10 @@
             this.eightBtn.Name = "eightBtn";
             this.eightBtn.Size = new System.Drawing.Size(113, 62);
             this.eightBtn.TabIndex = 7;
+            this.eightBtn.Tag = "8";
             this.eightBtn.Text = "8";
             this.eightBtn.UseVisualStyleBackColor = false;
+            this.eightBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // nineBtn
             // 
@@ -285,8 +322,10 @@
             this.nineBtn.Name = "nineBtn";
             this.nineBtn.Size = new System.Drawing.Size(113, 62);
             this.nineBtn.TabIndex = 8;
+            this.nineBtn.Tag = "9";
             this.nineBtn.Text = "9";
             this.nineBtn.UseVisualStyleBackColor = false;
+            this.nineBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // sixBtn
             // 
@@ -299,8 +338,10 @@
             this.sixBtn.Name = "sixBtn";
             this.sixBtn.Size = new System.Drawing.Size(113, 62);
             this.sixBtn.TabIndex = 9;
+            this.sixBtn.Tag = "6";
             this.sixBtn.Text = "6";
             this.sixBtn.UseVisualStyleBackColor = false;
+            this.sixBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // minusBtn
             // 
@@ -313,8 +354,10 @@
             this.minusBtn.Name = "minusBtn";
             this.minusBtn.Size = new System.Drawing.Size(117, 62);
             this.minusBtn.TabIndex = 10;
+            this.minusBtn.Tag = "-";
             this.minusBtn.Text = "-";
             this.minusBtn.UseVisualStyleBackColor = false;
+            this.minusBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // plusBtn
             // 
@@ -327,8 +370,10 @@
             this.plusBtn.Name = "plusBtn";
             this.plusBtn.Size = new System.Drawing.Size(117, 62);
             this.plusBtn.TabIndex = 11;
+            this.plusBtn.Tag = "+";
             this.plusBtn.Text = "+";
             this.plusBtn.UseVisualStyleBackColor = false;
+            this.plusBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // multBtn
             // 
@@ -341,13 +386,14 @@
             this.multBtn.Name = "multBtn";
             this.multBtn.Size = new System.Drawing.Size(117, 62);
             this.multBtn.TabIndex = 12;
+            this.multBtn.Tag = "*";
             this.multBtn.Text = "*";
             this.multBtn.UseVisualStyleBackColor = false;
+            this.multBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
             // 
             // divBtn
             // 
             this.divBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.divBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.divBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.divBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.divBtn.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -355,8 +401,165 @@
             this.divBtn.Name = "divBtn";
             this.divBtn.Size = new System.Drawing.Size(117, 62);
             this.divBtn.TabIndex = 13;
+            this.divBtn.Tag = "/";
             this.divBtn.Text = "/";
             this.divBtn.UseVisualStyleBackColor = false;
+            this.divBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
+            // 
+            // factorialBtn
+            // 
+            this.factorialBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.factorialBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.factorialBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.factorialBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.factorialBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.factorialBtn.Location = new System.Drawing.Point(360, 139);
+            this.factorialBtn.Name = "factorialBtn";
+            this.factorialBtn.Size = new System.Drawing.Size(113, 62);
+            this.factorialBtn.TabIndex = 14;
+            this.factorialBtn.Tag = "!";
+            this.factorialBtn.Text = "n!";
+            this.factorialBtn.UseVisualStyleBackColor = false;
+            this.factorialBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
+            // 
+            // bracketsBtn
+            // 
+            this.bracketsBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bracketsBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bracketsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bracketsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bracketsBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bracketsBtn.Location = new System.Drawing.Point(241, 139);
+            this.bracketsBtn.Name = "bracketsBtn";
+            this.bracketsBtn.Size = new System.Drawing.Size(113, 62);
+            this.bracketsBtn.TabIndex = 15;
+            this.bracketsBtn.Tag = "";
+            this.bracketsBtn.Text = "()";
+            this.bracketsBtn.UseVisualStyleBackColor = false;
+            // 
+            // logBtn
+            // 
+            this.logBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.logBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.logBtn.Location = new System.Drawing.Point(3, 343);
+            this.logBtn.Name = "logBtn";
+            this.logBtn.Size = new System.Drawing.Size(113, 62);
+            this.logBtn.TabIndex = 16;
+            this.logBtn.Tag = "log";
+            this.logBtn.Text = "log";
+            this.logBtn.UseVisualStyleBackColor = false;
+            // 
+            // numSignBtn
+            // 
+            this.numSignBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.numSignBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numSignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.numSignBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numSignBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.numSignBtn.Location = new System.Drawing.Point(122, 411);
+            this.numSignBtn.Name = "numSignBtn";
+            this.numSignBtn.Size = new System.Drawing.Size(113, 68);
+            this.numSignBtn.TabIndex = 17;
+            this.numSignBtn.Tag = "";
+            this.numSignBtn.Text = "+/-";
+            this.numSignBtn.UseVisualStyleBackColor = false;
+            this.numSignBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChangeNumSign);
+            // 
+            // pointBtn
+            // 
+            this.pointBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.pointBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pointBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pointBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pointBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pointBtn.Location = new System.Drawing.Point(360, 411);
+            this.pointBtn.Name = "pointBtn";
+            this.pointBtn.Size = new System.Drawing.Size(113, 68);
+            this.pointBtn.TabIndex = 18;
+            this.pointBtn.Tag = ",";
+            this.pointBtn.Text = ",";
+            this.pointBtn.UseVisualStyleBackColor = false;
+            this.pointBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteChar);
+            // 
+            // absoluteBtn
+            // 
+            this.absoluteBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.absoluteBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.absoluteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.absoluteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.absoluteBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.absoluteBtn.Location = new System.Drawing.Point(241, 71);
+            this.absoluteBtn.Name = "absoluteBtn";
+            this.absoluteBtn.Size = new System.Drawing.Size(113, 62);
+            this.absoluteBtn.TabIndex = 19;
+            this.absoluteBtn.Tag = "";
+            this.absoluteBtn.Text = "|n|";
+            this.absoluteBtn.UseVisualStyleBackColor = false;
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.clearBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.clearBtn.Location = new System.Drawing.Point(479, 3);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(117, 62);
+            this.clearBtn.TabIndex = 20;
+            this.clearBtn.Tag = "";
+            this.clearBtn.Text = "<<";
+            this.clearBtn.UseVisualStyleBackColor = false;
+            this.clearBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Clear);
+            // 
+            // clearAllBtn
+            // 
+            this.clearAllBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.clearAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearAllBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.clearAllBtn.Location = new System.Drawing.Point(360, 3);
+            this.clearAllBtn.Name = "clearAllBtn";
+            this.clearAllBtn.Size = new System.Drawing.Size(113, 62);
+            this.clearAllBtn.TabIndex = 21;
+            this.clearAllBtn.Tag = "";
+            this.clearAllBtn.Text = "C";
+            this.clearAllBtn.UseVisualStyleBackColor = false;
+            this.clearAllBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClearAll);
+            // 
+            // logNBtn
+            // 
+            this.logNBtn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.logNBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logNBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logNBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logNBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.logNBtn.Location = new System.Drawing.Point(3, 275);
+            this.logNBtn.Name = "logNBtn";
+            this.logNBtn.Size = new System.Drawing.Size(113, 62);
+            this.logNBtn.TabIndex = 22;
+            this.logNBtn.Tag = "ln";
+            this.logNBtn.Text = "ln";
+            this.logNBtn.UseVisualStyleBackColor = false;
+            // 
+            // log10Btn
+            // 
+            this.log10Btn.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.log10Btn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.log10Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.log10Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.log10Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.log10Btn.Location = new System.Drawing.Point(3, 207);
+            this.log10Btn.Name = "log10Btn";
+            this.log10Btn.Size = new System.Drawing.Size(113, 62);
+            this.log10Btn.TabIndex = 23;
+            this.log10Btn.Tag = "lg";
+            this.log10Btn.Text = "lg";
+            this.log10Btn.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -402,6 +605,16 @@
         private System.Windows.Forms.Button plusBtn;
         private System.Windows.Forms.Button multBtn;
         private System.Windows.Forms.Button divBtn;
+        private System.Windows.Forms.Button factorialBtn;
+        private System.Windows.Forms.Button bracketsBtn;
+        private System.Windows.Forms.Button logBtn;
+        private System.Windows.Forms.Button numSignBtn;
+        private System.Windows.Forms.Button pointBtn;
+        private System.Windows.Forms.Button absoluteBtn;
+        private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.Button clearAllBtn;
+        private System.Windows.Forms.Button logNBtn;
+        private System.Windows.Forms.Button log10Btn;
     }
 }
 
