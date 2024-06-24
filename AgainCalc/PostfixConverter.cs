@@ -107,7 +107,10 @@ namespace AgainCalc
 
                     if (c == '%')
                     {
-                        if (operators.Count > 0 && !Operation.IsOpenBracket(operators.Peek()))
+                        if (i < expression.Length - 1 && char.IsDigit(expression[i + 1]))
+                            operators.Push(c);
+
+                        else if (operators.Count > 0 && !Operation.IsOpenBracket(operators.Peek()))
                         {
                             string first = operands[operands.Count - 2];
                             converted += $"{first} * 100 / {operators.Pop()}";
@@ -123,6 +126,13 @@ namespace AgainCalc
 
                     if (char.IsLetter(c))
                     {
+                        if (Operation.IsConstantName(c.ToString()))
+                        {
+                            converted += c + " ";
+                            lastToken = c.ToString();
+                            continue;
+                        }
+
                         string f = "";
                         while (char.IsLetter(c))
                         {

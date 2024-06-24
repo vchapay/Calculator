@@ -71,12 +71,21 @@ namespace AgainCalc
         private static double Solve()
         {
             operands.Clear();
-            _tokens = _expression.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            _tokens = _expression.Split(new char[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries);
 
             string token;
             for (int i = 0; i < _tokens.Length; i++)
             {
                 token = _tokens[i];
+
+                if (Operation.IsConstantName(token))
+                {
+                    operands.Push(
+                        double.Parse(InputPresenter.ConstantsValues[token]));
+                    continue;
+                }
+
                 if (token.Length >= 1 && char.IsDigit(token[0]))
                 {
                     operands.Push(double.Parse(token));
@@ -130,6 +139,13 @@ namespace AgainCalc
                 }
 
                 operationResult = Operation.SolveUnary(operand, op);
+            }
+
+            if (op == '%')
+            {
+                double right = operands.Pop();
+                double left = operands.Pop();
+                operationResult = left - (Math.Floor(left / right) * right);
             }
 
             operands.Push(operationResult);

@@ -24,6 +24,8 @@ namespace AgainCalc
             "log",
         };
 
+        public const string Constants = "πeφ";
+
         /// <summary>
         /// Возвращает число от 1 до 4, означающее приоритетность оператора.
         /// </summary>
@@ -51,6 +53,11 @@ namespace AgainCalc
                 default:
                     return 5;
             }
+        }
+
+        public static bool IsConstantName(string name)
+        {
+            return Constants.Contains(name);
         }
 
         /// <summary>
@@ -85,7 +92,7 @@ namespace AgainCalc
         /// <returns></returns>
         public static bool IsUnary(char op)
         {
-            return "!a%".Contains(op);
+            return "!a".Contains(op);
         }
 
         public static bool IsOperator(char op)
