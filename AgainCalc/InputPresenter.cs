@@ -101,24 +101,24 @@ namespace AgainCalc
             new Regex(@"\d+,?[\(\)\{\}\[\]|]+,?\d+");
 
         private static readonly Regex unaryFuncSample =
-            new Regex(@"(\A|[-\(\[\{+*/^])+(sin|cos|tg|ctg|lg|ln){1}\(+");
+            new Regex(@"(\A|[-\(\[\{+*/^]?)(sin|cos|tg|ctg|lg|ln|randb|sec|csc|asin|acos|atg|actg|ceilling|floor|round|trun){1}\(+");
 
         private static readonly Regex binaryFuncSample =
-            new Regex(@"[-\(\[\{+*/^]*(log){1}\(.*[\d\)\]\}!%];");
+            new Regex(@"[-\(\[\{+*/^]*(log|rand){1}\(.*[\d\)\]\}!%];");
 
         private static readonly Regex funcsNames =
-            new Regex(@"\A(log|sin|cos|tg|ctg|lg|ln){1}\Z");
+            new Regex(@"\A(log|sin|cos|tg|ctg|lg|ln|rand|randb|sec|csc|asin|acos|atg|actg|ceilling|floor|round|trun){1}\Z");
 
         private static readonly Regex funcsSplitter = new Regex(@"\P{L}");
 
         private static readonly Regex operandsSplitter = 
-            new Regex(@"[a-z-+*/^\[\]\(\)\{\};%πeφ]+");
+            new Regex(@"[a-z-+*/^\[\]\(\)\{\};%πeφ!%]+");
+
+        private static readonly Regex factorBetweenNums =
+            new Regex(@"\d+!+\d+");
 
         private static readonly Regex containsNums =
             new Regex(@"\d");
-
-        private static readonly Regex correctConstant =
-            new Regex(@"\D[πeφ]{1}\D");
 
         /// <summary>
         /// Проверяет, имеет ли заданное строковое выражение смысл
@@ -359,6 +359,7 @@ namespace AgainCalc
         private static bool IsFuncsValid(string expression)
         {
             string[] onlyLetters = funcsSplitter.Split(expression);
+            List<string> funcs = new List<string>();
 
             int funcsCount = 0;
 
@@ -370,23 +371,33 @@ namespace AgainCalc
                 if (Operation.IsConstantName(cur)) continue;
                 if (!funcsNames.IsMatch(cur)) return false;
                 funcsCount++;
+                funcs.Add(cur);
             }
 
             int binaries = 0;
-            int nextLogInd = expression.IndexOf("log");
-            string logStr = expression;
-            while (nextLogInd != -1)
+
+            for (int i = 0; i < funcs.Count; i++) 
             {
-                logStr = logStr.Substring(nextLogInd);
-                if (binaryFuncSample.IsMatch(logStr))
-                    binaries++;
+                string func = funcs[i];
+                if (Operation.IsUnaryFunction(func))
+                    continue;
 
-                logStr = logStr.Remove(0, 3);
+                int nextFuncInd = expression.IndexOf(func);
+                string funcStr = expression;
+                while (nextFuncInd != -1)
+                {
+                    funcStr = funcStr.Substring(nextFuncInd);
+                    if (binaryFuncSample.IsMatch(funcStr))
+                        binaries++;
 
-                nextLogInd = logStr.IndexOf("log");
+                    funcStr = funcStr.Remove(0, 3);
+
+                    nextFuncInd = funcStr.IndexOf(func);
+                }
             }
 
             int unaries = unaryFuncSample.Matches(expression).Count;
+
             int semicolons = expression.Where((c) => c == ';').Count();
 
             return funcsCount == binaries + unaries && semicolons == binaries;
@@ -421,6 +432,9 @@ namespace AgainCalc
                 return false;
 
             if (impossibleFirstChars.Contains(expression[0]))
+                return false;
+
+            if (factorBetweenNums.IsMatch(expression))
                 return false;
 
             string[] nonOperands = expression.Split(OperandChars.ToCharArray(),

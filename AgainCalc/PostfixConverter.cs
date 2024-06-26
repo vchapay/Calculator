@@ -119,7 +119,7 @@ namespace AgainCalc
                         else converted += "100 / ";
                     }
 
-                    if (Operation.IsUnary(c) && c != '%')
+                    if (Operation.IsUnary(c) && c != '%' && c != 'a')
                     {
                         converted += c + " ";
                     }

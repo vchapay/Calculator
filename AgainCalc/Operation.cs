@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AgainCalc
 {
     internal static class Operation
     {
+        private static readonly Random rnd = new Random();
+
         private static readonly string[] unaryFunctions = new string[]
         {
             "sin",
@@ -16,12 +14,24 @@ namespace AgainCalc
             "tg",
             "ctg",
             "lg",
-            "ln"
+            "ln",
+            "randb",
+            "sec",
+            "csc",
+            "asin",
+            "acos",
+            "atg",
+            "actg",
+            "ceilling",
+            "floor",
+            "round",
+            "trun"
         };
 
         private static readonly string[] binaryFunctions = new string[]
         {
             "log",
+            "rand"
         };
 
         public const string Constants = "πeφ";
@@ -173,7 +183,11 @@ namespace AgainCalc
             switch (func)
             {
                 case "log":
-                    return Math.Log(args[0], args[1]);
+                    return Math.Log(args[1], args[0]);
+                case "rand":
+                    if ((int)args[0] > (int)args[1])
+                        return rnd.Next((int)args[1], (int)args[0]);
+                    else return 0;
                 default: throw new ArgumentException("Обнаружена неизвестная функция");
             }
         }
@@ -194,6 +208,30 @@ namespace AgainCalc
                     return Math.Log10(arg);
                 case "ln":
                     return Math.Log(arg);
+                case "randb":
+                    return rnd.NextDouble() + arg;
+                case "abs":
+                    return Math.Abs(arg);
+                case "sec":
+                    return 1 / Math.Cos(arg);
+                case "csc":
+                    return 1 / Math.Sin(arg);
+                case "asin":
+                    return Math.Asin(arg);
+                case "acos":
+                    return Math.Acos(arg);
+                case "atg":
+                    return Math.Atan(arg);
+                case "actg":
+                    return Math.Atan(-arg) + Math.PI / 2;
+                case "ceilling":
+                    return Math.Ceiling(arg);
+                case "floor":
+                    return Math.Floor(arg);
+                case "round":
+                    return Math.Round(arg);
+                case "trun":
+                    return Math.Truncate(arg);
                 default: throw new ArgumentException("Обнаружена неизвестная функция");
             }
         }
@@ -203,9 +241,9 @@ namespace AgainCalc
             return unaryFunctions.Contains(func);
         }
 
-        private static int FindFactorial(int baseNum)
+        private static double FindFactorial(int baseNum)
         {
-            int result = 1;
+            double result = 1;
             for (int i = 1; i <= baseNum; i++)
             {
                 result *= i;

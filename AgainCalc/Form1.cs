@@ -17,7 +17,7 @@ namespace AgainCalc
             InitializeComponent();
         }
 
-        private void Resolve(object sender, EventArgs e)
+        private void InputChanged(object sender, EventArgs e)
         {
             if (InputPresenter.IsValidForm(inputBox.Text))
             {
@@ -32,6 +32,14 @@ namespace AgainCalc
 
             InputPresenter.SelectionCursorPos = inputBox.SelectionStart;
             InputPresenter.SelectionLenght = inputBox.SelectionLength;
+
+            if (inputBox.Text.Length > 15)
+            {
+                float newSize = 600 / inputBox.Text.Length;
+                inputBox.Font = new Font(inputBox.Font.FontFamily, newSize);
+            }
+
+            else inputBox.Font = new Font(inputBox.Font.FontFamily, 42);
         }
 
         private void WriteChar(object sender, MouseEventArgs e)
@@ -91,7 +99,7 @@ namespace AgainCalc
         private void WriteFunc(object sender, MouseEventArgs e)
         {
             ToolStripMenuItem btn = sender as ToolStripMenuItem;
-            inputBox.Text = InputPresenter.WriteFunc(btn.Tag.ToString()); 
+            inputBox.Text = InputPresenter.WriteFunc(btn.Tag.ToString());
         }
 
         private void SaveSelectionMouseLeave(object sender, EventArgs e)
@@ -100,7 +108,12 @@ namespace AgainCalc
             InputPresenter.SelectionLenght = inputBox.SelectionLength;
         }
 
-        private void SaveExpression(object sender, MouseEventArgs e)
+        private void EqualPressed(object sender, MouseEventArgs e)
+        {
+            SaveCurrentExpression();
+        }
+
+        private void SaveCurrentExpression()
         {
             if (string.IsNullOrEmpty(inputBox.Text))
                 return;

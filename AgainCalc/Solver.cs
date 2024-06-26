@@ -115,6 +115,8 @@ namespace AgainCalc
 
                 double[] args = new double[] { first, second };
                 operationResult = Operation.SolveFunction(token, args);
+                operands.Push(operationResult);
+                return;
             }
 
             else if (token.Length > 1)

@@ -75,10 +75,23 @@
             this.cosBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.tgBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ctgBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.secn0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asinnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acosnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.atgnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actgnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logFuncsMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.logBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.lnBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.lgBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.extraFuncsMenuList = new System.Windows.Forms.ToolStripMenuItem();
+            this.randbEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.absnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ceillingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.floorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.roundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trouncateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu = new System.Windows.Forms.ToolStrip();
             this.mainMenuBtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -168,7 +181,7 @@
             this.inputBox.TabIndex = 1;
             this.inputBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.inputBox.WordWrap = false;
-            this.inputBox.TextChanged += new System.EventHandler(this.Resolve);
+            this.inputBox.TextChanged += new System.EventHandler(this.InputChanged);
             this.inputBox.MouseLeave += new System.EventHandler(this.SaveSelectionMouseLeave);
             this.inputBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SaveSelectionMouseUp);
             // 
@@ -772,7 +785,7 @@
             this.button11.Tag = "";
             this.button11.Text = "=";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SaveExpression);
+            this.button11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EqualPressed);
             // 
             // button12
             // 
@@ -796,7 +809,8 @@
             this.extraFuncsMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.extraFuncsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.trigonometricFuncsMenuList,
-            this.logFuncsMenuList});
+            this.logFuncsMenuList,
+            this.extraFuncsMenuList});
             this.extraFuncsMenu.Location = new System.Drawing.Point(0, 0);
             this.extraFuncsMenu.Name = "extraFuncsMenu";
             this.extraFuncsMenu.Size = new System.Drawing.Size(478, 29);
@@ -810,7 +824,13 @@
             this.sinBtn,
             this.cosBtn,
             this.tgBtn,
-            this.ctgBtn});
+            this.ctgBtn,
+            this.secn0ToolStripMenuItem,
+            this.cscToolStripMenuItem,
+            this.asinnToolStripMenuItem,
+            this.acosnToolStripMenuItem,
+            this.atgnToolStripMenuItem,
+            this.actgnToolStripMenuItem});
             this.trigonometricFuncsMenuList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.trigonometricFuncsMenuList.Image = global::AgainCalc.Properties.Resources.trigonometryImage;
             this.trigonometricFuncsMenuList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -821,7 +841,7 @@
             // sinBtn
             // 
             this.sinBtn.Name = "sinBtn";
-            this.sinBtn.Size = new System.Drawing.Size(122, 26);
+            this.sinBtn.Size = new System.Drawing.Size(130, 26);
             this.sinBtn.Tag = "sin";
             this.sinBtn.Text = "sin(n)";
             this.sinBtn.ToolTipText = "Синус аргумента в выбранных единицах измерения";
@@ -830,7 +850,7 @@
             // cosBtn
             // 
             this.cosBtn.Name = "cosBtn";
-            this.cosBtn.Size = new System.Drawing.Size(122, 26);
+            this.cosBtn.Size = new System.Drawing.Size(130, 26);
             this.cosBtn.Tag = "cos";
             this.cosBtn.Text = "cos(n)";
             this.cosBtn.ToolTipText = "Косинус аргумента в выбранных единицах измерения";
@@ -839,7 +859,7 @@
             // tgBtn
             // 
             this.tgBtn.Name = "tgBtn";
-            this.tgBtn.Size = new System.Drawing.Size(122, 26);
+            this.tgBtn.Size = new System.Drawing.Size(130, 26);
             this.tgBtn.Tag = "tg";
             this.tgBtn.Text = "tg(n)";
             this.tgBtn.ToolTipText = "Тангенс аргумента в выбранных единицах измерения";
@@ -848,11 +868,65 @@
             // ctgBtn
             // 
             this.ctgBtn.Name = "ctgBtn";
-            this.ctgBtn.Size = new System.Drawing.Size(122, 26);
+            this.ctgBtn.Size = new System.Drawing.Size(130, 26);
             this.ctgBtn.Tag = "ctg";
             this.ctgBtn.Text = "ctg(n)";
             this.ctgBtn.ToolTipText = "Котангенс аргумента в выбранных единицах измерения";
             this.ctgBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // secn0ToolStripMenuItem
+            // 
+            this.secn0ToolStripMenuItem.Name = "secn0ToolStripMenuItem";
+            this.secn0ToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.secn0ToolStripMenuItem.Tag = "sec";
+            this.secn0ToolStripMenuItem.Text = "sec(n)";
+            this.secn0ToolStripMenuItem.ToolTipText = "Секанс аргумента";
+            this.secn0ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // cscToolStripMenuItem
+            // 
+            this.cscToolStripMenuItem.Name = "cscToolStripMenuItem";
+            this.cscToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.cscToolStripMenuItem.Tag = "csc";
+            this.cscToolStripMenuItem.Text = "csc(n)";
+            this.cscToolStripMenuItem.ToolTipText = "Косеканс аргумента";
+            this.cscToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // asinnToolStripMenuItem
+            // 
+            this.asinnToolStripMenuItem.Name = "asinnToolStripMenuItem";
+            this.asinnToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.asinnToolStripMenuItem.Tag = "asin";
+            this.asinnToolStripMenuItem.Text = "asin(n)";
+            this.asinnToolStripMenuItem.ToolTipText = "Арксинус аргумента";
+            this.asinnToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // acosnToolStripMenuItem
+            // 
+            this.acosnToolStripMenuItem.Name = "acosnToolStripMenuItem";
+            this.acosnToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.acosnToolStripMenuItem.Tag = "acos";
+            this.acosnToolStripMenuItem.Text = "acos(n)";
+            this.acosnToolStripMenuItem.ToolTipText = "Арккосинус аргумента";
+            this.acosnToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // atgnToolStripMenuItem
+            // 
+            this.atgnToolStripMenuItem.Name = "atgnToolStripMenuItem";
+            this.atgnToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.atgnToolStripMenuItem.Tag = "atg";
+            this.atgnToolStripMenuItem.Text = "atg(n)";
+            this.atgnToolStripMenuItem.ToolTipText = "Арктангенс аргумента";
+            this.atgnToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // actgnToolStripMenuItem
+            // 
+            this.actgnToolStripMenuItem.Name = "actgnToolStripMenuItem";
+            this.actgnToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.actgnToolStripMenuItem.Tag = "actg";
+            this.actgnToolStripMenuItem.Text = "actg(n)";
+            this.actgnToolStripMenuItem.ToolTipText = "Арккотангенс аргумента";
+            this.actgnToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
             // 
             // logFuncsMenuList
             // 
@@ -892,6 +966,75 @@
             this.lgBtn.Text = "lg(n)";
             this.lgBtn.ToolTipText = "Десятичный логарифм от аргумента";
             this.lgBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // extraFuncsMenuList
+            // 
+            this.extraFuncsMenuList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.randbEToolStripMenuItem,
+            this.absnToolStripMenuItem,
+            this.ceillingToolStripMenuItem,
+            this.floorToolStripMenuItem,
+            this.roundToolStripMenuItem,
+            this.trouncateToolStripMenuItem});
+            this.extraFuncsMenuList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.extraFuncsMenuList.Image = ((System.Drawing.Image)(resources.GetObject("extraFuncsMenuList.Image")));
+            this.extraFuncsMenuList.Name = "extraFuncsMenuList";
+            this.extraFuncsMenuList.Size = new System.Drawing.Size(89, 25);
+            this.extraFuncsMenuList.Text = "Другое";
+            // 
+            // randbEToolStripMenuItem
+            // 
+            this.randbEToolStripMenuItem.Name = "randbEToolStripMenuItem";
+            this.randbEToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.randbEToolStripMenuItem.Tag = "rand";
+            this.randbEToolStripMenuItem.Text = "rand(n; m)";
+            this.randbEToolStripMenuItem.ToolTipText = "Случайное целое число в диапазоне от числа n до числа m";
+            this.randbEToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // absnToolStripMenuItem
+            // 
+            this.absnToolStripMenuItem.Name = "absnToolStripMenuItem";
+            this.absnToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.absnToolStripMenuItem.Tag = "randb";
+            this.absnToolStripMenuItem.Text = "randb(n)";
+            this.absnToolStripMenuItem.ToolTipText = "Случайное нецелое число в диапазоне от числа n до n + 1";
+            this.absnToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // ceillingToolStripMenuItem
+            // 
+            this.ceillingToolStripMenuItem.Name = "ceillingToolStripMenuItem";
+            this.ceillingToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.ceillingToolStripMenuItem.Tag = "ceilling";
+            this.ceillingToolStripMenuItem.Text = "ceilling(n)";
+            this.ceillingToolStripMenuItem.ToolTipText = "Округляет аргумент до ближайшего большего целого числа";
+            this.ceillingToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // floorToolStripMenuItem
+            // 
+            this.floorToolStripMenuItem.Name = "floorToolStripMenuItem";
+            this.floorToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.floorToolStripMenuItem.Tag = "floor";
+            this.floorToolStripMenuItem.Text = "floor(n)";
+            this.floorToolStripMenuItem.ToolTipText = "Округляет аргумент до ближацшего меньшего целого числа";
+            this.floorToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // roundToolStripMenuItem
+            // 
+            this.roundToolStripMenuItem.Name = "roundToolStripMenuItem";
+            this.roundToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.roundToolStripMenuItem.Tag = "round";
+            this.roundToolStripMenuItem.Text = "round(n)";
+            this.roundToolStripMenuItem.ToolTipText = "Округляет аргумент до ближайшего целого числа";
+            this.roundToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
+            // 
+            // trouncateToolStripMenuItem
+            // 
+            this.trouncateToolStripMenuItem.Name = "trouncateToolStripMenuItem";
+            this.trouncateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.trouncateToolStripMenuItem.Tag = "trun";
+            this.trouncateToolStripMenuItem.Text = "trun(n)";
+            this.trouncateToolStripMenuItem.ToolTipText = "Отбрасывает дробную часть от аргумента";
+            this.trouncateToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WriteFunc);
             // 
             // mainMenu
             // 
@@ -1141,6 +1284,19 @@
         private System.Windows.Forms.ListBox inputsListBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ToolStripMenuItem extraFuncsMenuList;
+        private System.Windows.Forms.ToolStripMenuItem randbEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem absnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secn0ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cscToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asinnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acosnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem atgnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actgnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ceillingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem floorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem roundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trouncateToolStripMenuItem;
     }
 }
 
