@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace AgainCalc
 {
     /// <summary>
-    /// Предоставляет сложную логику хранения и обработки вводимых данных,
-    /// а также методы сложного преобразования этих данных
+    /// Предоставляет логику хранения и обработки вводимой строки,
+    /// а также методы преобразования
     /// </summary>
     public static class InputPresenter
     {
@@ -63,10 +63,10 @@ namespace AgainCalc
 
         public static IReadOnlyDictionary<string, string> ConstantsValues
         {
-            get => constantsValues;
+            get => СonstantsValues;
         }
 
-        private static readonly Dictionary<string, string> constantsValues =
+        private static readonly Dictionary<string, string> СonstantsValues =
             new Dictionary<string, string>()
             {
                 { "π", "3,1415926535897932" },
@@ -92,7 +92,7 @@ namespace AgainCalc
 
         private static readonly Regex emptyBrackets = new Regex(@"([\(\[\{;]+[-+*/^!%]*[;\)\]\}]+)|((\d|[πeφ])+[\(\[\{]+)|([\)\]\}]+(\d|[πeφ])+)");
 
-        private static readonly Regex impossibleConstant = new Regex(@"(\d+[πeφ]+|[πeφ]+\d+)");
+        private static readonly Regex impossibleConstant = new Regex(@"((\d+[πeφ]+|[πeφ]+\d+)|([πeφ]{1}[πeφ]+))");
 
         private static readonly Regex correctNumSample = 
             new Regex(@"\A\d+(,?\d+)?[!%]*\Z");
@@ -371,7 +371,8 @@ namespace AgainCalc
                 if (Operation.IsConstantName(cur)) continue;
                 if (!funcsNames.IsMatch(cur)) return false;
                 funcsCount++;
-                funcs.Add(cur);
+                if (!funcs.Contains(cur))
+                    funcs.Add(cur);
             }
 
             int binaries = 0;

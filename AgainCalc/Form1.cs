@@ -33,10 +33,11 @@ namespace AgainCalc
             InputPresenter.SelectionCursorPos = inputBox.SelectionStart;
             InputPresenter.SelectionLenght = inputBox.SelectionLength;
 
-            if (inputBox.Text.Length > 15)
+            if (inputBox.Text.Length >= 15)
             {
-                float newSize = 600 / inputBox.Text.Length;
-                inputBox.Font = new Font(inputBox.Font.FontFamily, newSize);
+                float newSize = 610 / inputBox.Text.Length;
+                if (newSize > 20)
+                    inputBox.Font = new Font(inputBox.Font.FontFamily, newSize);
             }
 
             else inputBox.Font = new Font(inputBox.Font.FontFamily, 42);

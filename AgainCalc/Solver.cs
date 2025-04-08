@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AgainCalc
 {
     /// <summary>
-    /// Предоставляет логику для решения выражений, заданных произвольно строкой
+    /// Предоставляет логику для решения выражений, заданных произвольной строкой
     /// </summary>
     internal static class Solver
     {
@@ -49,7 +49,7 @@ namespace AgainCalc
             {
                 _message = "";
                 _expression = PostfixConverter.Convert(expression);
-                result = Math.Round(Solve(), 10).ToString();
+                result = Math.Round(Solve(), 15).ToString();
                 message = _message;
 
                 if (_message != "")

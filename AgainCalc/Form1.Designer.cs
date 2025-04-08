@@ -125,7 +125,7 @@
             // 
             this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainSplitContainer.IsSplitterFixed = true;
-            this.mainSplitContainer.Location = new System.Drawing.Point(3, 46);
+            this.mainSplitContainer.Location = new System.Drawing.Point(3, 50);
             this.mainSplitContainer.Name = "mainSplitContainer";
             this.mainSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -137,8 +137,8 @@
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.mainSplitContainer.Panel2.Controls.Add(this.extraFuncsMenu);
-            this.mainSplitContainer.Size = new System.Drawing.Size(478, 630);
-            this.mainSplitContainer.SplitterDistance = 95;
+            this.mainSplitContainer.Size = new System.Drawing.Size(478, 678);
+            this.mainSplitContainer.SplitterDistance = 102;
             this.mainSplitContainer.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -152,9 +152,9 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.48148F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.51852F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(478, 95);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.45098F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.54902F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(478, 102);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // expressionLbl
@@ -165,7 +165,7 @@
             this.expressionLbl.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.expressionLbl.Location = new System.Drawing.Point(3, 0);
             this.expressionLbl.Name = "expressionLbl";
-            this.expressionLbl.Size = new System.Drawing.Size(472, 20);
+            this.expressionLbl.Size = new System.Drawing.Size(472, 28);
             this.expressionLbl.TabIndex = 0;
             this.expressionLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -175,7 +175,7 @@
             this.inputBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inputBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inputBox.Location = new System.Drawing.Point(3, 23);
+            this.inputBox.Location = new System.Drawing.Point(3, 31);
             this.inputBox.Name = "inputBox";
             this.inputBox.Size = new System.Drawing.Size(472, 64);
             this.inputBox.TabIndex = 1;
@@ -240,7 +240,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(478, 502);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(478, 543);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button13
@@ -250,9 +250,9 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button13.Location = new System.Drawing.Point(3, 429);
+            this.button13.Location = new System.Drawing.Point(3, 465);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(89, 70);
+            this.button13.Size = new System.Drawing.Size(89, 75);
             this.button13.TabIndex = 37;
             this.button13.Tag = "10^";
             this.button13.Text = "10ⁿ";
@@ -265,10 +265,10 @@
             this.zeroBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zeroBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.zeroBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.zeroBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.zeroBtn.Location = new System.Drawing.Point(193, 429);
+            this.zeroBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.zeroBtn.Location = new System.Drawing.Point(193, 465);
             this.zeroBtn.Name = "zeroBtn";
-            this.zeroBtn.Size = new System.Drawing.Size(89, 70);
+            this.zeroBtn.Size = new System.Drawing.Size(89, 75);
             this.zeroBtn.TabIndex = 0;
             this.zeroBtn.Tag = "0";
             this.zeroBtn.Text = "0";
@@ -281,10 +281,10 @@
             this.oneBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.oneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.oneBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.oneBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.oneBtn.Location = new System.Drawing.Point(98, 358);
+            this.oneBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.oneBtn.Location = new System.Drawing.Point(98, 388);
             this.oneBtn.Name = "oneBtn";
-            this.oneBtn.Size = new System.Drawing.Size(89, 65);
+            this.oneBtn.Size = new System.Drawing.Size(89, 71);
             this.oneBtn.TabIndex = 1;
             this.oneBtn.Tag = "1";
             this.oneBtn.Text = "1";
@@ -297,10 +297,10 @@
             this.twoBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.twoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.twoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.twoBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.twoBtn.Location = new System.Drawing.Point(193, 358);
+            this.twoBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.twoBtn.Location = new System.Drawing.Point(193, 388);
             this.twoBtn.Name = "twoBtn";
-            this.twoBtn.Size = new System.Drawing.Size(89, 65);
+            this.twoBtn.Size = new System.Drawing.Size(89, 71);
             this.twoBtn.TabIndex = 2;
             this.twoBtn.Tag = "2";
             this.twoBtn.Text = "2";
@@ -313,10 +313,10 @@
             this.threeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.threeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.threeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.threeBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.threeBtn.Location = new System.Drawing.Point(288, 358);
+            this.threeBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.threeBtn.Location = new System.Drawing.Point(288, 388);
             this.threeBtn.Name = "threeBtn";
-            this.threeBtn.Size = new System.Drawing.Size(89, 65);
+            this.threeBtn.Size = new System.Drawing.Size(89, 71);
             this.threeBtn.TabIndex = 3;
             this.threeBtn.Tag = "3";
             this.threeBtn.Text = "3";
@@ -329,10 +329,10 @@
             this.fourBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fourBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fourBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fourBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.fourBtn.Location = new System.Drawing.Point(98, 287);
+            this.fourBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.fourBtn.Location = new System.Drawing.Point(98, 311);
             this.fourBtn.Name = "fourBtn";
-            this.fourBtn.Size = new System.Drawing.Size(89, 65);
+            this.fourBtn.Size = new System.Drawing.Size(89, 71);
             this.fourBtn.TabIndex = 4;
             this.fourBtn.Tag = "4";
             this.fourBtn.Text = "4";
@@ -345,10 +345,10 @@
             this.sevenBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sevenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sevenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sevenBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.sevenBtn.Location = new System.Drawing.Point(98, 216);
+            this.sevenBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.sevenBtn.Location = new System.Drawing.Point(98, 234);
             this.sevenBtn.Name = "sevenBtn";
-            this.sevenBtn.Size = new System.Drawing.Size(89, 65);
+            this.sevenBtn.Size = new System.Drawing.Size(89, 71);
             this.sevenBtn.TabIndex = 5;
             this.sevenBtn.Tag = "7";
             this.sevenBtn.Text = "7";
@@ -361,10 +361,10 @@
             this.fiveBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fiveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fiveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fiveBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.fiveBtn.Location = new System.Drawing.Point(193, 287);
+            this.fiveBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.fiveBtn.Location = new System.Drawing.Point(193, 311);
             this.fiveBtn.Name = "fiveBtn";
-            this.fiveBtn.Size = new System.Drawing.Size(89, 65);
+            this.fiveBtn.Size = new System.Drawing.Size(89, 71);
             this.fiveBtn.TabIndex = 6;
             this.fiveBtn.Tag = "5";
             this.fiveBtn.Text = "5";
@@ -377,10 +377,10 @@
             this.eightBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.eightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.eightBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.eightBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.eightBtn.Location = new System.Drawing.Point(193, 216);
+            this.eightBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.eightBtn.Location = new System.Drawing.Point(193, 234);
             this.eightBtn.Name = "eightBtn";
-            this.eightBtn.Size = new System.Drawing.Size(89, 65);
+            this.eightBtn.Size = new System.Drawing.Size(89, 71);
             this.eightBtn.TabIndex = 7;
             this.eightBtn.Tag = "8";
             this.eightBtn.Text = "8";
@@ -393,10 +393,10 @@
             this.nineBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nineBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nineBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nineBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.nineBtn.Location = new System.Drawing.Point(288, 216);
+            this.nineBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.nineBtn.Location = new System.Drawing.Point(288, 234);
             this.nineBtn.Name = "nineBtn";
-            this.nineBtn.Size = new System.Drawing.Size(89, 65);
+            this.nineBtn.Size = new System.Drawing.Size(89, 71);
             this.nineBtn.TabIndex = 8;
             this.nineBtn.Tag = "9";
             this.nineBtn.Text = "9";
@@ -409,10 +409,10 @@
             this.sixBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sixBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sixBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sixBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.sixBtn.Location = new System.Drawing.Point(288, 287);
+            this.sixBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.sixBtn.Location = new System.Drawing.Point(288, 311);
             this.sixBtn.Name = "sixBtn";
-            this.sixBtn.Size = new System.Drawing.Size(89, 65);
+            this.sixBtn.Size = new System.Drawing.Size(89, 71);
             this.sixBtn.TabIndex = 9;
             this.sixBtn.Tag = "6";
             this.sixBtn.Text = "6";
@@ -426,9 +426,9 @@
             this.minusBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.minusBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.minusBtn.Location = new System.Drawing.Point(383, 287);
+            this.minusBtn.Location = new System.Drawing.Point(383, 311);
             this.minusBtn.Name = "minusBtn";
-            this.minusBtn.Size = new System.Drawing.Size(92, 65);
+            this.minusBtn.Size = new System.Drawing.Size(92, 71);
             this.minusBtn.TabIndex = 10;
             this.minusBtn.Tag = "-";
             this.minusBtn.Text = "-";
@@ -442,9 +442,9 @@
             this.plusBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.plusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.plusBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.plusBtn.Location = new System.Drawing.Point(383, 358);
+            this.plusBtn.Location = new System.Drawing.Point(383, 388);
             this.plusBtn.Name = "plusBtn";
-            this.plusBtn.Size = new System.Drawing.Size(92, 65);
+            this.plusBtn.Size = new System.Drawing.Size(92, 71);
             this.plusBtn.TabIndex = 11;
             this.plusBtn.Tag = "+";
             this.plusBtn.Text = "+";
@@ -458,9 +458,9 @@
             this.multBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.multBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.multBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.multBtn.Location = new System.Drawing.Point(383, 216);
+            this.multBtn.Location = new System.Drawing.Point(383, 234);
             this.multBtn.Name = "multBtn";
-            this.multBtn.Size = new System.Drawing.Size(92, 65);
+            this.multBtn.Size = new System.Drawing.Size(92, 71);
             this.multBtn.TabIndex = 12;
             this.multBtn.Tag = "*";
             this.multBtn.Text = "*";
@@ -474,9 +474,9 @@
             this.divBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.divBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.divBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.divBtn.Location = new System.Drawing.Point(383, 145);
+            this.divBtn.Location = new System.Drawing.Point(383, 157);
             this.divBtn.Name = "divBtn";
-            this.divBtn.Size = new System.Drawing.Size(92, 65);
+            this.divBtn.Size = new System.Drawing.Size(92, 71);
             this.divBtn.TabIndex = 13;
             this.divBtn.Tag = "/";
             this.divBtn.Text = "/";
@@ -490,9 +490,9 @@
             this.factorialBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.factorialBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.factorialBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.factorialBtn.Location = new System.Drawing.Point(288, 145);
+            this.factorialBtn.Location = new System.Drawing.Point(288, 157);
             this.factorialBtn.Name = "factorialBtn";
-            this.factorialBtn.Size = new System.Drawing.Size(89, 65);
+            this.factorialBtn.Size = new System.Drawing.Size(89, 71);
             this.factorialBtn.TabIndex = 14;
             this.factorialBtn.Tag = "!";
             this.factorialBtn.Text = "n!";
@@ -506,9 +506,9 @@
             this.bracketsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bracketsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bracketsBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bracketsBtn.Location = new System.Drawing.Point(193, 145);
+            this.bracketsBtn.Location = new System.Drawing.Point(193, 157);
             this.bracketsBtn.Name = "bracketsBtn";
-            this.bracketsBtn.Size = new System.Drawing.Size(89, 65);
+            this.bracketsBtn.Size = new System.Drawing.Size(89, 71);
             this.bracketsBtn.TabIndex = 15;
             this.bracketsBtn.Tag = "()";
             this.bracketsBtn.Text = "(n)";
@@ -522,9 +522,9 @@
             this.numSignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.numSignBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numSignBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.numSignBtn.Location = new System.Drawing.Point(98, 429);
+            this.numSignBtn.Location = new System.Drawing.Point(98, 465);
             this.numSignBtn.Name = "numSignBtn";
-            this.numSignBtn.Size = new System.Drawing.Size(89, 70);
+            this.numSignBtn.Size = new System.Drawing.Size(89, 75);
             this.numSignBtn.TabIndex = 17;
             this.numSignBtn.Tag = "";
             this.numSignBtn.Text = "+/-";
@@ -538,9 +538,9 @@
             this.pointBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pointBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pointBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pointBtn.Location = new System.Drawing.Point(288, 429);
+            this.pointBtn.Location = new System.Drawing.Point(288, 465);
             this.pointBtn.Name = "pointBtn";
-            this.pointBtn.Size = new System.Drawing.Size(89, 70);
+            this.pointBtn.Size = new System.Drawing.Size(89, 75);
             this.pointBtn.TabIndex = 18;
             this.pointBtn.Tag = ",";
             this.pointBtn.Text = ",";
@@ -556,7 +556,7 @@
             this.clearBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.clearBtn.Location = new System.Drawing.Point(383, 3);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(92, 65);
+            this.clearBtn.Size = new System.Drawing.Size(92, 71);
             this.clearBtn.TabIndex = 20;
             this.clearBtn.Tag = "";
             this.clearBtn.Text = "<<";
@@ -572,7 +572,7 @@
             this.clearAllBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.clearAllBtn.Location = new System.Drawing.Point(288, 3);
             this.clearAllBtn.Name = "clearAllBtn";
-            this.clearAllBtn.Size = new System.Drawing.Size(89, 65);
+            this.clearAllBtn.Size = new System.Drawing.Size(89, 71);
             this.clearAllBtn.TabIndex = 21;
             this.clearAllBtn.Tag = "";
             this.clearAllBtn.Text = "C";
@@ -586,9 +586,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(98, 145);
+            this.button1.Location = new System.Drawing.Point(98, 157);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 65);
+            this.button1.Size = new System.Drawing.Size(89, 71);
             this.button1.TabIndex = 22;
             this.button1.Tag = "";
             this.button1.Text = "⅟ₙ";
@@ -602,9 +602,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(288, 74);
+            this.button2.Location = new System.Drawing.Point(288, 80);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 65);
+            this.button2.Size = new System.Drawing.Size(89, 71);
             this.button2.TabIndex = 23;
             this.button2.Tag = "^(1/)";
             this.button2.Text = "ⁿ√n";
@@ -618,9 +618,9 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(3, 145);
+            this.button3.Location = new System.Drawing.Point(3, 157);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 65);
+            this.button3.Size = new System.Drawing.Size(89, 71);
             this.button3.TabIndex = 24;
             this.button3.Tag = "^";
             this.button3.Text = "aⁿ";
@@ -634,9 +634,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Location = new System.Drawing.Point(383, 74);
+            this.button4.Location = new System.Drawing.Point(383, 80);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 65);
+            this.button4.Size = new System.Drawing.Size(92, 71);
             this.button4.TabIndex = 25;
             this.button4.Tag = "%";
             this.button4.Text = "mod";
@@ -652,7 +652,7 @@
             this.eConstBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.eConstBtn.Location = new System.Drawing.Point(98, 3);
             this.eConstBtn.Name = "eConstBtn";
-            this.eConstBtn.Size = new System.Drawing.Size(89, 65);
+            this.eConstBtn.Size = new System.Drawing.Size(89, 71);
             this.eConstBtn.TabIndex = 27;
             this.eConstBtn.Tag = "e";
             this.eConstBtn.Text = "e";
@@ -668,7 +668,7 @@
             this.piConstBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.piConstBtn.Location = new System.Drawing.Point(3, 3);
             this.piConstBtn.Name = "piConstBtn";
-            this.piConstBtn.Size = new System.Drawing.Size(89, 65);
+            this.piConstBtn.Size = new System.Drawing.Size(89, 71);
             this.piConstBtn.TabIndex = 28;
             this.piConstBtn.Tag = "π";
             this.piConstBtn.Text = "π";
@@ -682,9 +682,9 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(3, 216);
+            this.button5.Location = new System.Drawing.Point(3, 234);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 65);
+            this.button5.Size = new System.Drawing.Size(89, 71);
             this.button5.TabIndex = 29;
             this.button5.Tag = "^2";
             this.button5.Text = "n²";
@@ -698,9 +698,9 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button6.Location = new System.Drawing.Point(3, 287);
+            this.button6.Location = new System.Drawing.Point(3, 311);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 65);
+            this.button6.Size = new System.Drawing.Size(89, 71);
             this.button6.TabIndex = 30;
             this.button6.Tag = "^3";
             this.button6.Text = "n³";
@@ -714,9 +714,9 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button7.Location = new System.Drawing.Point(3, 358);
+            this.button7.Location = new System.Drawing.Point(3, 388);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(89, 65);
+            this.button7.Size = new System.Drawing.Size(89, 71);
             this.button7.TabIndex = 31;
             this.button7.Tag = "2^";
             this.button7.Text = "2ⁿ";
@@ -730,9 +730,9 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button9.Location = new System.Drawing.Point(3, 74);
+            this.button9.Location = new System.Drawing.Point(3, 80);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(89, 65);
+            this.button9.Size = new System.Drawing.Size(89, 71);
             this.button9.TabIndex = 33;
             this.button9.Tag = "^(1/4)";
             this.button9.Text = "∜n";
@@ -746,9 +746,9 @@
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button8.Location = new System.Drawing.Point(98, 74);
+            this.button8.Location = new System.Drawing.Point(98, 80);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(89, 65);
+            this.button8.Size = new System.Drawing.Size(89, 71);
             this.button8.TabIndex = 32;
             this.button8.Tag = "^(1/3)";
             this.button8.Text = "∛n";
@@ -762,9 +762,9 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button10.Location = new System.Drawing.Point(193, 74);
+            this.button10.Location = new System.Drawing.Point(193, 80);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(89, 65);
+            this.button10.Size = new System.Drawing.Size(89, 71);
             this.button10.TabIndex = 34;
             this.button10.Tag = "^(1/2)";
             this.button10.Text = "√n";
@@ -778,9 +778,9 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button11.ForeColor = System.Drawing.SystemColors.Info;
-            this.button11.Location = new System.Drawing.Point(383, 429);
+            this.button11.Location = new System.Drawing.Point(383, 465);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(92, 70);
+            this.button11.Size = new System.Drawing.Size(92, 75);
             this.button11.TabIndex = 35;
             this.button11.Tag = "";
             this.button11.Text = "=";
@@ -796,7 +796,7 @@
             this.button12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button12.Location = new System.Drawing.Point(193, 3);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(89, 65);
+            this.button12.Size = new System.Drawing.Size(89, 71);
             this.button12.TabIndex = 36;
             this.button12.Tag = "φ";
             this.button12.Text = "φ";
@@ -985,7 +985,7 @@
             // randbEToolStripMenuItem
             // 
             this.randbEToolStripMenuItem.Name = "randbEToolStripMenuItem";
-            this.randbEToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.randbEToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.randbEToolStripMenuItem.Tag = "rand";
             this.randbEToolStripMenuItem.Text = "rand(n; m)";
             this.randbEToolStripMenuItem.ToolTipText = "Случайное целое число в диапазоне от числа n до числа m";
@@ -994,7 +994,7 @@
             // absnToolStripMenuItem
             // 
             this.absnToolStripMenuItem.Name = "absnToolStripMenuItem";
-            this.absnToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.absnToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.absnToolStripMenuItem.Tag = "randb";
             this.absnToolStripMenuItem.Text = "randb(n)";
             this.absnToolStripMenuItem.ToolTipText = "Случайное нецелое число в диапазоне от числа n до n + 1";
@@ -1003,7 +1003,7 @@
             // ceillingToolStripMenuItem
             // 
             this.ceillingToolStripMenuItem.Name = "ceillingToolStripMenuItem";
-            this.ceillingToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.ceillingToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.ceillingToolStripMenuItem.Tag = "ceilling";
             this.ceillingToolStripMenuItem.Text = "ceilling(n)";
             this.ceillingToolStripMenuItem.ToolTipText = "Округляет аргумент до ближайшего большего целого числа";
@@ -1012,7 +1012,7 @@
             // floorToolStripMenuItem
             // 
             this.floorToolStripMenuItem.Name = "floorToolStripMenuItem";
-            this.floorToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.floorToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.floorToolStripMenuItem.Tag = "floor";
             this.floorToolStripMenuItem.Text = "floor(n)";
             this.floorToolStripMenuItem.ToolTipText = "Округляет аргумент до ближацшего меньшего целого числа";
@@ -1021,7 +1021,7 @@
             // roundToolStripMenuItem
             // 
             this.roundToolStripMenuItem.Name = "roundToolStripMenuItem";
-            this.roundToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.roundToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.roundToolStripMenuItem.Tag = "round";
             this.roundToolStripMenuItem.Text = "round(n)";
             this.roundToolStripMenuItem.ToolTipText = "Округляет аргумент до ближайшего целого числа";
@@ -1030,7 +1030,7 @@
             // trouncateToolStripMenuItem
             // 
             this.trouncateToolStripMenuItem.Name = "trouncateToolStripMenuItem";
-            this.trouncateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.trouncateToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.trouncateToolStripMenuItem.Tag = "trun";
             this.trouncateToolStripMenuItem.Text = "trun(n)";
             this.trouncateToolStripMenuItem.ToolTipText = "Отбрасывает дробную часть от аргумента";
@@ -1045,7 +1045,7 @@
             this.toolStripButton1});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(484, 43);
+            this.mainMenu.Size = new System.Drawing.Size(484, 47);
             this.mainMenu.TabIndex = 2;
             this.mainMenu.Text = "toolStrip1";
             // 
@@ -1121,7 +1121,7 @@
             this.basePanel.RowCount = 2;
             this.basePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.471495F));
             this.basePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.5285F));
-            this.basePanel.Size = new System.Drawing.Size(484, 679);
+            this.basePanel.Size = new System.Drawing.Size(484, 731);
             this.basePanel.TabIndex = 3;
             // 
             // baseSplitContainer
@@ -1140,7 +1140,7 @@
             // 
             this.baseSplitContainer.Panel2.Controls.Add(this.tableLayoutPanel3);
             this.baseSplitContainer.Panel2MinSize = 125;
-            this.baseSplitContainer.Size = new System.Drawing.Size(615, 681);
+            this.baseSplitContainer.Size = new System.Drawing.Size(615, 733);
             this.baseSplitContainer.SplitterDistance = 486;
             this.baseSplitContainer.TabIndex = 4;
             // 
@@ -1157,7 +1157,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.523035F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.47697F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(123, 679);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(123, 731);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // label1
@@ -1166,7 +1166,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 23);
+            this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Сохраненное";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1178,9 +1178,9 @@
             this.inputsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.inputsListBox.FormattingEnabled = true;
             this.inputsListBox.ItemHeight = 24;
-            this.inputsListBox.Location = new System.Drawing.Point(3, 26);
+            this.inputsListBox.Location = new System.Drawing.Point(3, 28);
             this.inputsListBox.Name = "inputsListBox";
-            this.inputsListBox.Size = new System.Drawing.Size(117, 650);
+            this.inputsListBox.Size = new System.Drawing.Size(117, 700);
             this.inputsListBox.TabIndex = 0;
             this.inputsListBox.SelectedIndexChanged += new System.EventHandler(this.SelectSavedExpression);
             this.inputsListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RemoveSavedExpression);
@@ -1189,7 +1189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 681);
+            this.ClientSize = new System.Drawing.Size(615, 733);
             this.Controls.Add(this.baseSplitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
